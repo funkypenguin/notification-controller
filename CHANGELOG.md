@@ -2,6 +2,67 @@
 
 All notable changes to this project are documented in this file.
 
+## 1.8.0
+
+**Release date:** 2026-02-17
+
+This minor release comes with new notification providers for pull/merge request
+comments, expanded NATS authentication support, and various improvements.
+
+### Provider
+
+New notification providers have been introduced for posting comments on
+pull/merge requests: `githubpullrequestcomment`, `gitlabmergerequestcomment`,
+and `giteapullrequestcomment`.
+
+The NATS provider has been enhanced to support multiple authentication methods
+including JWT, NKey, and Username/Password, in addition to the existing
+token-based authentication.
+
+The GitHub provider now supports looking up the GitHub App installation ID
+automatically, removing the need to configure it manually.
+
+Commit status reporting has been extended to support any Flux APIs that include
+commit metadata.
+
+### Alert
+
+The `ArtifactGenerator` and `ExternalArtifact` kinds can now be used as Alert
+event sources.
+
+### General updates
+
+In addition, the Kubernetes dependencies have been updated to v1.35.0 and
+the controller is now built with Go 1.26.
+
+Fixes:
+- Fix notification-controller memory leak in the `gitea` provider
+  [#1228](https://github.com/fluxcd/notification-controller/pull/1228)
+
+Improvements:
+- Introduce `githubpullrequestcomment` notification provider
+  [#1230](https://github.com/fluxcd/notification-controller/pull/1230)
+- Introduce `gitlabmergerequestcomment` notification provider
+  [#1231](https://github.com/fluxcd/notification-controller/pull/1231)
+- Introduce `giteapullrequestcomment` notification provider
+  [#1234](https://github.com/fluxcd/notification-controller/pull/1234)
+- Improve zulip Alert Provider comment
+  [#1232](https://github.com/fluxcd/notification-controller/pull/1232)
+- Support commit status for any Flux APIs
+  [#1233](https://github.com/fluxcd/notification-controller/pull/1233)
+- Enhance NATS provider to support multiple authentication methods
+  [#1222](https://github.com/fluxcd/notification-controller/pull/1222)
+- Introduce support for looking up GH app installation ID
+  [#1223](https://github.com/fluxcd/notification-controller/pull/1223)
+- Add `ArtifactGenerator` and `ExternalArtifact` kinds to Alert source
+  [#1237](https://github.com/fluxcd/notification-controller/pull/1237)
+- Various dependency updates
+  [#1225](https://github.com/fluxcd/notification-controller/pull/1225)
+  [#1235](https://github.com/fluxcd/notification-controller/pull/1235)
+  [#1236](https://github.com/fluxcd/notification-controller/pull/1236)
+  [#1239](https://github.com/fluxcd/notification-controller/pull/1239)
+  [#1240](https://github.com/fluxcd/notification-controller/pull/1240)
+
 ## 1.7.5
 
 **Release date:** 2025-11-19
